@@ -43,7 +43,7 @@ To delete an item, use DELETE method and input the id of the item:
 ```
 localhost:3001/item/1
 ```
-# Example raw body in Create & Update of an item:
+### Example raw body in Create & Update of an item:
 ```
 {
 	"id":1,
