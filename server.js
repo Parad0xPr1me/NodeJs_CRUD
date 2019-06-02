@@ -73,7 +73,7 @@ app.put('/item/:id', (req, res) => {
     dbConn.query('UPDATE items SET  ? WHERE id = ?', [req.body, id], (error, result) => {
         if (error) throw error;
  
-        res.send('Item updated successfully.');
+        res.send('Item updated successfully!');
     });
 });
 
@@ -84,6 +84,6 @@ app.delete('/item/:id', (req, res) => {
     dbConn.query('DELETE FROM items WHERE id = ?', id, (error, result) => {
         if (error) throw error;
  
-        res.send('Item deleted.');
+        res.send('Item deleted!');
     });
 });
