@@ -66,7 +66,7 @@ app.post('/item', ( req,res) => {
     });
 });
 
-// UPDATE AN ITEM
+// UPDATE ITEM
 app.put('/item/:id', (req, res) => {
     const id = req.params.id;
  
@@ -74,5 +74,16 @@ app.put('/item/:id', (req, res) => {
         if (error) throw error;
  
         res.send('Item updated successfully.');
+    });
+});
+
+// DELETE ITEM
+app.delete('/item/:id', (req, res) => {
+    const id = req.params.id;
+ 
+    dbConn.query('DELETE FROM items WHERE id = ?', id, (error, result) => {
+        if (error) throw error;
+ 
+        res.send('Item deleted.');
     });
 });
