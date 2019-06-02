@@ -46,3 +46,13 @@ dbConn.connect((err)=>{
         console.log(err);
      })
  })
+
+// Retrieve a single item
+ app.get('/items/id',( req, res)=>{
+    dbConn.query('SELECT * FROM items WHERE id = ?',[req.params.id],(err, rows, fields)=>{
+       if(!err)
+       res.send(rows);
+       else
+       console.log(err);
+    })
+})
