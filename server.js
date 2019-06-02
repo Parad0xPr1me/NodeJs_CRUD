@@ -34,11 +34,11 @@ dbConn.connect((err)=>{
 
 
 /*
-/ CRUD Routes
+///////////////////// CRUD Routes ///////////////////
 */
 
-// Retrieve all items
- app.get('/items',( req, res)=>{
+// RETRIEVE ALL ITEMS
+ app.get('/items', ( req, res)=>{
      dbConn.query('SELECT * FROM items',(err,rows,fields)=>{
         if(!err)
         res.send(rows);
@@ -47,8 +47,8 @@ dbConn.connect((err)=>{
      })
  })
 
-// Retrieve a single item
- app.get('/items/:id',( req, res)=>{
+// RETRIEVE A SINGLE ITEM
+ app.get('/items/:id', ( req, res)=>{
     dbConn.query('SELECT * FROM items WHERE id = ?',[req.params.id],(err, rows, fields)=>{
        if(!err)
        res.send(rows);
@@ -56,3 +56,12 @@ dbConn.connect((err)=>{
        console.log(err);
     })
 })
+
+// ADD NEW ITEM
+app.post('/item', ( req,res) => {
+    dbConn.query('INSERT INTO items SET ?', req.body, (error, result) => {
+        if (error) throw error;
+ 
+        res.status(201).send('Item successfully added!');
+    });
+});
