@@ -70,7 +70,7 @@ app.post('/item', ( req,res) => {
 app.put('/item/:id', (req, res) => {
     const id = req.params.id;
  
-    dbConn.query('UPDATE items SET  ? WHERE id = ?', [req.body, id], (error, result) => {
+    dbConn.query('UPDATE items SET ? WHERE id = ?', [req.body, id], (error, result) => {
         if (error) throw error;
  
         res.send('Item updated successfully!');
