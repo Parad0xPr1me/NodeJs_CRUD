@@ -30,3 +30,19 @@ dbConn.connect((err)=>{
     else 
     console.log("Database connection failed! \n Error:" + JSON.stringify(err,underfined,2));
 })
+
+
+
+/*
+/ CRUD Routes
+*/
+
+// Retrieve all items
+ app.get('/items',( req, res)=>{
+     dbConn.query('SELECT * FROM items',(err,rows,fields)=>{
+        if(!err)
+        res.send(rows);
+        else
+        console.log(err);
+     })
+ })
