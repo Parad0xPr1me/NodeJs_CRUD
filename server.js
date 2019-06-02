@@ -11,3 +11,7 @@ app.listen(3001, function () {
 });
 module.exports = app;
 
+// default route
+ app.get('/', function ( req, res) {
+     return res.send({ message: 'Hello multiverse!' })
+ });
