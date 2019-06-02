@@ -57,11 +57,22 @@ dbConn.connect((err)=>{
     })
 })
 
-// ADD NEW ITEM
+// ADD ITEM
 app.post('/item', ( req,res) => {
     dbConn.query('INSERT INTO items SET ?', req.body, (error, result) => {
         if (error) throw error;
  
         res.status(201).send('Item successfully added!');
+    });
+});
+
+// UPDATE AN ITEM
+app.put('/item/:id', (req, res) => {
+    const id = req.params.id;
+ 
+    dbConn.query('UPDATE items SET  ? WHERE id = ?', [req.body, id], (error, result) => {
+        if (error) throw error;
+ 
+        res.send('Item updated successfully.');
     });
 });
